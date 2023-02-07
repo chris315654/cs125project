@@ -9,11 +9,41 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView{
+            VStack {
+                Text("You slept ____ hours last night")
+                Text("This week on average you slept 5 hours")
+                
+                Text("This month on average you slept 6 hours")
+                
+                Text("Since you started tracking sleep, you slept an average of 6 hours")
+                
+                Text("You should sleep at 1:00 AM if you want to make it to ____ tomorrow.")
+                    .padding()
+                HStack {
+                    Button("Sleep"){
+                        print("tapped")
+                    }
+                    Button("Calendar"){
+                        print("tapped")
+                    }
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { // <2>
+                ToolbarItem(placement: .principal) { // <3>
+                    HStack{
+                        Text("Zzzot").font(.system(size: 45, weight: .bold, design: .default))
+                            .padding(.horizontal,50)
+                        Button(action:{}){
+                            Text("cal")
+                        }
+                    }
+                        
+                    
+                }
+            }
+
         }
         .padding()
     }
