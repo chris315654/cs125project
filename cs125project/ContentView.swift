@@ -11,6 +11,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isShowingPopover = false
+    @State private var isActive = false
     @State private var date = Date()
     
     var body: some View {
@@ -28,9 +29,16 @@ struct ContentView: View {
                 HStack {
                     Button("Sleep"){
                         print("tapped")
+                        
                     }
                     Button("Calendar"){
                         print("tapped")
+                        isActive = true
+                    }
+                    .padding()
+                    
+                    NavigationLink(destination: CalendarView(), isActive: $isActive) {
+                        EmptyView()
                     }
                 }
             }
@@ -62,7 +70,13 @@ struct ContentView: View {
         .padding()
     }
 }
-
+struct CalendarView: View {
+    var body: some View {
+        Text("Calendar View")
+            .navigationBarTitle("Calendar")
+    }
+}
+    
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
